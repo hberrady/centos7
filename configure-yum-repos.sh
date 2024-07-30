@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Copyright (C) 2024 HICHAM BERRADY
-# This script replaces the content of CentOS-Base.repo and epel.repo with specified configurations.
+# This script is used to update and configure the yum repository files on CentOS 7.
 
 # Replace content of /etc/yum.repos.d/CentOS-Base.repo
 sudo tee /etc/yum.repos.d/CentOS-Base.repo <<EOF
