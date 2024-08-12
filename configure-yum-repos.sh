@@ -63,3 +63,6 @@ EOF
 
 # Clear yum cache
 sudo yum clean all
+
+# To execute this script directly from GitHub:
+# bash <(curl -s https://raw.githubusercontent.com/hberrady/centos7/main/configure-yum-repos.sh)
