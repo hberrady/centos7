@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Copyright (C) 2024 HICHAM BERRADY
-# This script is used to update and configure the yum repository files on CentOS 7.
+# This script is used to update and configure the yum repository files on CentOS 7
+# and install PHP 7.1.33.
 
 # Replace content of /etc/yum.repos.d/CentOS-Base.repo
 sudo tee /etc/yum.repos.d/CentOS-Base.repo <<EOF
@@ -63,6 +64,18 @@ EOF
 
 # Clear yum cache
 sudo yum clean all
+
+# Install Remi repository
+sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+# Enable the Remi repository for PHP 7.1
+sudo yum-config-manager --enable remi-php71
+
+# Install PHP 7.1 and CLI
+sudo yum install -y php php-cli
+
+# Verify PHP installation
+php -v
 
 # To execute this script directly from GitHub:
 # bash <(curl -s https://raw.githubusercontent.com/hberrady/centos7/main/configure-yum-repos.sh)
