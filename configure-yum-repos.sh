@@ -4,7 +4,25 @@
 # This script is used to update and configure the yum repository files on CentOS 7
 # and install PHP 7.1.33.
 
+# Define the GPG key URLs
+CENTOS_GPG_KEY_URL="https://www.centos.org/keys/RPM-GPG-KEY-CentOS-7"
+EPEL_GPG_KEY_URL="https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7"
+
+# Download and install the CentOS GPG key
+echo "Downloading CentOS GPG key..."
+sudo curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 $CENTOS_GPG_KEY_URL
+
+# Download and install the EPEL GPG key
+echo "Downloading EPEL GPG key..."
+sudo curl -o /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7 $EPEL_GPG_KEY_URL
+
+# Import the GPG keys
+echo "Importing GPG keys..."
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+sudo rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+
 # Replace content of /etc/yum.repos.d/CentOS-Base.repo
+echo "Configuring CentOS Base repository..."
 sudo tee /etc/yum.repos.d/CentOS-Base.repo <<EOF
 [base]
 name=CentOS-\$releasever - Base
@@ -36,6 +54,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 EOF
 
 # Replace content of /etc/yum.repos.d/epel.repo
+echo "Configuring EPEL repository..."
 sudo tee /etc/yum.repos.d/epel.repo <<EOF
 [epel]
 name=Extra Packages for Enterprise Linux 7 - \$basearch
@@ -63,21 +82,27 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 EOF
 
 # Clear yum cache
+echo "Clearing yum cache..."
 sudo yum clean all
 
 # Install Remi repository
+echo "Installing Remi repository..."
 sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
 # Enable the Remi repository for PHP 7.1
+echo "Enabling Remi repository for PHP 7.1..."
 sudo yum-config-manager --enable remi-php71
 
 # Refresh package list
+echo "Refreshing package list..."
 sudo yum makecache
 
 # Install PHP 7.1 and CLI
+echo "Installing PHP 7.1 and CLI..."
 sudo yum install -y php php-cli
 
 # Verify PHP installation
+echo "Verifying PHP installation..."
 php -v
 
 # To execute this script directly from GitHub:
