@@ -57,28 +57,28 @@ EOF
 echo "Configuring EPEL repository..."
 sudo tee /etc/yum.repos.d/epel.repo <<EOF
 [epel]
-name=Extra Packages for Enterprise Linux 7 - \$basearch
-metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=\$basearch
-failovermethod=priority
+name=Extra Packages for Enterprise Linux 7 - $basearch
+baseurl=https://download.fedoraproject.org/pub/epel/7/$basearch/
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
 enabled=1
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgkey=https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 
 [epel-debuginfo]
-name=Extra Packages for Enterprise Linux 7 - \$basearch - Debug
-metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=\$basearch
-failovermethod=priority
+name=Extra Packages for Enterprise Linux 7 - $basearch - Debug
+baseurl=https://download.fedoraproject.org/pub/epel/7/$basearch/debug/
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-7&arch=$basearch
 enabled=0
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgkey=https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 
 [epel-source]
-name=Extra Packages for Enterprise Linux 7 - \$basearch - Source
-metalink=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=\$basearch
-failovermethod=priority
+name=Extra Packages for Enterprise Linux 7 - $basearch - Source
+baseurl=https://download.fedoraproject.org/pub/epel/7/SRPMS/
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-7&arch=$basearch
 enabled=0
 gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+gpgkey=https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7
 EOF
 
 # Clear yum cache
