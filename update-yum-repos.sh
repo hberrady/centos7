@@ -30,6 +30,7 @@ echo "epel.repo file updated."
 
 # Clean the Yum cache
 yum clean all
+yum makecache
 
 # Update the system
 yum update -y
