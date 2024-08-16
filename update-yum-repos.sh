@@ -33,6 +33,5 @@ yum clean all
 yum makecache
 
 # Update the system
-yum update -y
 
 echo "Yum update completed."
