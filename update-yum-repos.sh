@@ -1,6 +1,6 @@
 #!/bin/bash
-# Create or update the epel.repo file
-cat > /etc/yum.repos.d/epel.repo <<EOL
+# Create or update the epel.repo file using tee
+tee /etc/yum.repos.d/epel.repo > /dev/null <<EOL
 [epel]
 name=Extra Packages for Enterprise Linux 7 - \$basearch
 baseurl=https://download.fedoraproject.org/pub/epel/7/\$basearch/
