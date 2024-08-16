@@ -1,11 +1,4 @@
 #!/bin/bash
-
-# Backup the existing epel.repo if it exists
-if [ -f /etc/yum.repos.d/epel.repo ]; then
-    cp /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.bak
-    echo "Backup of the existing epel.repo created: /etc/yum.repos.d/epel.repo.bak"
-fi
-
 # Create or update the epel.repo file
 cat > /etc/yum.repos.d/epel.repo <<EOL
 [epel]
