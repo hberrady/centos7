@@ -75,3 +75,18 @@ yum clean all
 yum update -y
 
 echo "Yum update completed."
+
+# Install Remi repository
+sudo yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+# Enable the Remi repository for PHP 7.1
+sudo yum-config-manager --enable remi-php71
+
+# Refresh package list
+sudo yum makecache
+
+# Install PHP 7.1 and CLI
+sudo yum install -y php php-cli
+
+# Verify PHP installation
+php -v
