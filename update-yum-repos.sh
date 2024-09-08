@@ -76,6 +76,9 @@ yum update -y
 
 echo "Yum update completed."
 
+yum install -y yum-utils
+yum-config-manager --enable remi-php71
+
 # Install the EPEL repository (a prerequisite for the Remi repository)
 yum install -y epel-release  # 1. Install the EPEL repository
 
@@ -91,3 +94,4 @@ yum-config-manager --enable remi-php71  # 4. Enable the Remi repository for PHP 
 # Install PHP 7.1 from the Remi repository
 yum install -y php  # 5. Install PHP 7.1
 
+php -v
